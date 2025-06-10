@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridwan Noor - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-3px);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            border: 3px solid white;
+            z-index: 1;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 16px;
+            bottom: -32px;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .custom-checkbox input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3b82f6;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #3b82f6;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">Ridwan</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="text-gray-700 hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="text-gray-700 hover:text-primary transition-colors">Projects</a>
+                <a href="#experience" class="text-gray-700 hover:text-primary transition-colors">Experience</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <button id="mobileMenuButton" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100">
+                <i class="ri-menu-line ri-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#about" class="text-gray-700 hover:text-primary py-2 transition-colors">About</a>
+                <a href="#skills" class="text-gray-700 hover:text-primary py-2 transition-colors">Skills</a>
+                <a href="#projects" class="text-gray-700 hover:text-primary py-2 transition-colors">Projects</a>
+                <a href="#experience" class="text-gray-700 hover:text-primary py-2 transition-colors">Experience</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary py-2 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+   <!-- Hero Section -->
+<section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-white">
+  <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-10">
+    
+    <!-- Text Content -->
+    <div class="w-full lg:w-1/2">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Ridwan Noor</h1>
+      <h2 class="text-xl md:text-2xl font-medium text-gray-700 mb-8">Frontend Developer & WordPress Specialist
+
+</h2>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl">Frontend developer passionate about building impactful and responsive web applications. Skilled in React and WordPress, and currently expanding into backend development with Python (Flask).</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#projects" class="px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:shadow-lg transition-all whitespace-nowrap">View My Work</a>
+        <a href="#contact" class="px-6 py-3 bg-white text-primary border border-primary font-medium rounded-button hover:bg-gray-50 transition-all whitespace-nowrap">Get In Touch</a>
+      </div>
+    </div>
+
+    <!-- Image Content -->
+    <div class="w-full lg:w-1/2">
+      <img src="https://readdy.ai/api/search-image?query=modern%20minimalist%20tech%20workspace%20with%20soft%20blue%20gradient%20background%2C%20clean%20desk%20with%20laptop%20and%20developer%20tools%2C%20soft%20lighting%2C%20professional%20atmosphere%2C%20high%20quality%2C%20detailed%2C%208k&width=1920&height=1080&seq=hero1&orientation=landscape" alt="Tech Workspace" class="w-full rounded-xl shadow-lg object-cover">
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">About Me</h2>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Who I Am</h3>
+                    <p class="text-gray-600 mb-6">I am a passionate and multi-skilled tech enthusiast with a solid foundation in software engineering. Currently serving as a Frontend Developer at Oasis Innovation Hub, I specialize in building responsive web interfaces using modern technologies like React and WordPress. I'm also skilled in graphic design and actively expanding my expertise into backend development with Python. I thrive on creating impactful digital experiences and continuously growing in the tech world.</p>
+                    <p class="text-gray-600 mb-6">Through my journey at Oasis Innovation Hub, I’ve gained hands-on experience building web projects using React, WordPress, and foundational backend development with Python and Flask. I'm currently expanding my skills while pursuing a Bachelor of Education (Science) degree at Garissa University.</p>
+                    <p class="text-gray-600">Outside of coding, I enjoy learning new tools, working on personal projects, and connecting with others in the tech space to grow together.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Education</h3>
+                    <div class="space-y-8 relative pl-8">
+                        <div class="timeline-item relative">
+                            <h4 class="text-lg font-medium text-gray-800">Bachelor of Education Science</h4>
+                            <p class="text-primary font-medium">Garissa University</p>
+                            <p class="text-gray-500 text-sm">2023 - Present</p>
+                        </div>
+                        <div class="timeline-item relative">
+                            <h4 class="text-lg font-medium text-gray-800">Software Engineering</h4>
+                            <p class="text-primary font-medium">Oasis Innovation Centre</p>
+                            <p class="text-gray-500 text-sm">6 - Months</p>
+                        </div>
+                        <div class="timeline-item relative">
+                            <h4 class="text-lg font-medium text-gray-800">High School</h4>
+                            <p class="text-primary font-medium">Murray Girls' High School</p>
+                            <p class="text-gray-500 text-sm">Graduated 2022</p>
+                        </div>
+                         <div class="timeline-item relative">
+                            <h4 class="text-lg font-medium text-gray-800">Elementary  School</h4>
+                            <p class="text-primary font-medium">ACC $ S Primary School</p>
+                            <p class="text-gray-500 text-sm">Graduated 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Languages -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-code-line ri-lg text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-blue-100 text-primary rounded-full text-sm">HTML</span>
+                        <span class="skill-tag px-3 py-1 bg-blue-100 text-primary rounded-full text-sm">CSS</span>
+                        <span class="skill-tag px-3 py-1 bg-blue-100 text-primary rounded-full text-sm">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-blue-100 text-primary rounded-full text-sm">Python</span>
+                    </div>
+                </div>
+                
+                <!-- Frameworks/Libraries -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-stack-line ri-lg text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Frameworks & Libraries</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">React</span>
+                        <span class="skill-tag px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Tailwind CSS</span>
+                        <span class="skill-tag px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Bootstrap</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & CMS -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-tools-line ri-lg text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Tools & CMS</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">WordPress</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Git</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">GitHub</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">VS Code</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Canva</span>
+                        <span class="skill-tag px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Postman</span>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-database-2-line ri-lg text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Other Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-sm">JWT Auth</span>
+                        <span class="skill-tag px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-sm">Responsive Design</span>
+                        <span class="skill-tag px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-sm">API Integration</span>
+                        <span class="skill-tag px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-sm">Graphic Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">My Projects</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Here are some of the projects I've worked on. Each one presented unique challenges that helped me grow as a developer.</p>
+            
+            <!-- Project Filter -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex p-1 bg-gray-100 rounded-full">
+                    <button class="filter-btn active px-4 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap" data-filter="all">All Projects</button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="web">Web Apps</button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="wordpress">WordPress</button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="design">Design</button>
+                </div>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hospital Management System -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20hospital%20management%20system%20dashboard%20interface%20with%20patient%20records%2C%20appointment%20scheduling%2C%20and%20medical%20data%20visualization%2C%20clean%20UI%20design%2C%20blue%20and%20white%20color%20scheme%2C%20professional%20medical%20software%20interface&width=600&height=400&seq=project1&orientation=landscape" alt="Hospital Management System" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Hospital Management System</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive solution for healthcare facilities to manage patients, appointments, staff, and medical records.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Flask</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">MySQL</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">JWT</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-eye-line mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-github-line mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Online Exam Platform -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=online%20exam%20platform%20interface%20with%20question%20panel%2C%20timer%2C%20and%20student%20dashboard%2C%20modern%20educational%20software%20UI%2C%20clean%20design%20with%20blue%20accents%2C%20professional%20e-learning%20platform&width=600&height=400&seq=project2&orientation=landscape" alt="Online Exam Platform" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Online Exam Platform</h3>
+                        <p class="text-gray-600 mb-4">A secure platform for creating, administering, and grading online examinations with real-time results.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Flask</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">MySQL</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Authentication</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-eye-line mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-github-line mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- E-commerce Website -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="wordpress">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20with%20product%20grid%2C%20shopping%20cart%2C%20and%20payment%20options%2C%20clean%20WordPress%20design%2C%20responsive%20layout%2C%20professional%20online%20store%20interface&width=600&height=400&seq=project3&orientation=landscape" alt="E-commerce Website" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">E-commerce Website</h3>
+                        <p class="text-gray-600 mb-4">Custom WordPress e-commerce solution with product management, secure checkout, and inventory tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">WordPress</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">WooCommerce</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">CSS</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">PHP</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-eye-line mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-information-line mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Community Blog -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="wordpress">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20blog%20website%20with%20article%20grid%2C%20comment%20section%2C%20and%20category%20navigation%2C%20clean%20WordPress%20theme%2C%20responsive%20layout%2C%20professional%20publishing%20platform&width=600&height=400&seq=project4&orientation=landscape" alt="Community Blog" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Community Blog Platform</h3>
+                        <p class="text-gray-600 mb-4">A customized WordPress blog with multi-author support, content categorization, and engagement features.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">WordPress</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Custom Theme</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">SEO</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Analytics</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-eye-line mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-information-line mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Graphic Design Portfolio -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="design">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=graphic%20design%20portfolio%20with%20logo%20designs%2C%20posters%2C%20and%20branding%20materials%2C%20creative%20showcase%20layout%2C%20professional%20design%20work%20presentation%2C%20colorful%20design%20elements&width=600&height=400&seq=project5&orientation=landscape" alt="Graphic Design Portfolio" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Graphic Design Portfolio</h3>
+                        <p class="text-gray-600 mb-4">Collection of logos, posters, flyers, and social media designs created for various clients and personal projects.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Canva</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Figma</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Branding</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Social Media</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-gallery-line mr-1"></i> View Gallery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personal Finance Tracker -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=personal%20finance%20tracker%20dashboard%20with%20expense%20charts%2C%20budget%20planning%20tools%2C%20and%20financial%20insights%2C%20modern%20financial%20app%20UI%2C%20clean%20design%20with%20data%20visualization%2C%20professional%20finance%20management%20software&width=600&height=400&seq=project6&orientation=landscape" alt="Personal Finance Tracker" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Personal Finance Tracker</h3>
+                        <p class="text-gray-600 mb-4">Web application for tracking expenses, managing budgets, and visualizing financial data with customizable reports.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">JavaScript</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Chart.js</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">LocalStorage</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Responsive</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-primary text-white rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-eye-line mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button text-sm font-medium flex items-center whitespace-nowrap">
+                                <i class="ri-github-line mr-1"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+  <section id="experience" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">Professional Experience</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      
+<!-- Technical Mentor Experience -->
+<div class="bg-white p-8 rounded-lg shadow-md">
+  <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+    <div>
+      <h3 class="text-xl font-semibold text-gray-800">Frontend Developer & Graphic Designer</h3>
+      <p class="text-primary font-medium">Oasis Innovation Hub</p>
+    </div>
+    <p class="text-gray-500 mt-2 md:mt-0">2025 – Present</p>
+  </div>
+  <ul class="space-y-3 text-gray-600">
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Developing responsive web interfaces using HTML, CSS, JavaScript, and React</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Creating and customizing websites using WordPress for community projects</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Designing graphics for web and social media using tools like Canva and Figma</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Collaborating with team members to improve UI/UX and frontend functionality</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Currently learning backend development using Python and Flask</p>
+    </li>
+  </ul>
+</div>
+
+
+     <!-- Freelance Experience -->
+<div class="bg-white p-8 rounded-lg shadow-md">
+  <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+    <div>
+      <h3 class="text-xl font-semibold text-gray-800">Freelance Frontend Developer & WordPress Designer</h3>
+      <p class="text-primary font-medium">Remote / Community-Based Projects</p>
+    </div>
+    <p class="text-gray-500 mt-2 md:mt-0">2025 - Present</p>
+  </div>
+  <ul class="space-y-3 text-gray-600">
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Designing and developing responsive websites using HTML, CSS, JavaScript, and WordPress</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Customizing WordPress themes and plugins to match client branding and needs</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Collaborating with local clients and organizations for design, tech support, and site updates</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Creating visual assets and web mockups using Canva and Figma</p>
+    </li>
+    <li class="flex items-start">
+      <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center mt-1 mr-3">
+        <i class="ri-check-line text-white ri-sm"></i>
+      </div>
+      <p>Managing client communication, collecting feedback, and delivering revisions on time</p>
+    </li>
+  </ul>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<section id="skills" class="py-10 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">Soft Skills & Languages</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Soft Skills -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Soft Skills</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-center"><input type="checkbox" checked disabled><span class="ml-2">Team Collaboration</span></li>
+          <li class="flex items-center"><input type="checkbox" checked disabled><span class="ml-2">Creative Problem Solving</span></li>
+          <li class="flex items-center"><input type="checkbox" checked disabled><span class="ml-2">Public Speaking</span></li>
+          <li class="flex items-center"><input type="checkbox" checked disabled><span class="ml-2">Time Management</span></li>
+          <li class="flex items-center"><input type="checkbox" checked disabled><span class="ml-2">Tech Support & Troubleshooting</span></li>
+        </ul>
+      </div>
+
+      <!-- Languages -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Languages</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>English</span><span class="text-sm text-gray-500">Fluent</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>Kiswahili</span><span class="text-sm text-gray-500">Fluent</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>Somali</span><span class="text-sm text-gray-500">Native</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2 rounded-full">
+              <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">Get In Touch</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you! Fill out the form below or reach out through any of my social channels.</p>
+            
+            <div class="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto">
+                <div class="md:w-1/2">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="What is this regarding?">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:shadow-lg transition-all w-full whitespace-nowrap">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-lg h-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                    <i class="ri-mail-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-700 font-medium">Email</h4>
+                                    <a href="mailto:ahmed.hassan@example.com" class="text-primary hover:underline">ridwannoor627@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                    <i class="ri-phone-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-700 font-medium">Phone</h4>
+                                    <a href="tel:+254712345678" class="text-primary hover:underline">+254 725 621 949</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                    <i class="ri-map-pin-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-700 font-medium">Location</h4>
+                                    <p class="text-gray-600">Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-6">
+                                <h4 class="text-gray-700 font-medium mb-4">Connect With Me</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                                        <i class="ri-github-fill"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                                        <i class="ri-linkedin-fill"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                                        <i class="ri-twitter-x-fill"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                                        <i class="ri-instagram-line"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white">Ridwan</a>
+                    <p class="text-gray-400 mt-2">Frontend Developer & WordPress Specialist</p>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <hr class="border-gray-800 my-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Ridwan Noor. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">Last updated: June 8, 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script id="mobileMenuScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+    <script id="projectFilterScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-primary', 'text-white');
+                        btn.classList.add('text-gray-700');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    this.classList.remove('text-gray-700');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script id="contactFormScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Basic validation
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Here you would normally send the form data to a server
+                // For demo purposes, we'll just show a success message
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        });
+    </script>
+
+    <script id="smoothScrollScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
